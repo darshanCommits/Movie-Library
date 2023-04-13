@@ -4,4 +4,52 @@
   align-items: #{if($vertical, "center", "flex-start")};
 }
 
+@mixin blob () {
+  @include flex-center;
+  cursor: pointer;
+  width: $blob * 1.41421356237;
+  height: $blob * 1.41421356237;
+  background-color: $header-clr;
+  border-radius: 50%;
+}
 
+@mixin arrow-rotate(
+  $rotate-before,
+  $rotate-after,
+  $rotate-hover-before,
+  $rotate-hover-after
+) {
+  &::before {
+    transform: rotate($rotate-before);
+  }
+
+  &:hover::before {
+    transform: rotate($rotate-hover-before);
+  }
+
+  &:not(:hover)::before {
+    transform: rotate($rotate-before);
+  }
+
+  &::after {
+    transform: rotate($rotate-after);
+  }
+
+  &:hover::after {
+    transform: rotate($rotate-hover-after);
+  }
+
+  &:not(:hover)::after {
+    transform: rotate($rotate-after);
+  }
+}
+
+@mixin arrow-rotate-af($rotate-before, $rotate-after) {
+    &:hover::before {
+        transform: rotate($rotate-before);
+      }
+    
+      &:hover::after {
+        transform: rotate($rotate-after);
+      }
+}

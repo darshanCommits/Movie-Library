@@ -2,8 +2,9 @@ const movieSection = document.getElementById("main");
 const fragment = document.createDocumentFragment();
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("createNew");
-const addNewMovie = document.getElementById("")
-console.log([...blob]);
+const addNewMovie = document.getElementById("newMovie");
+
+console.log(addNewMovie[0]);
 
 
 function Movie(name, author, genre, cast, rating) {

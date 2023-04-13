@@ -1,4 +1,4 @@
-@import "mixins", "reset", "variables", "js",
+@import "mixins", "reset", "variables", "js", "functions",
   url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,400;0,600;1,400&family=Ubuntu&display=swap");
 
 $body-bg: #313244;
@@ -30,7 +30,7 @@ main {
   display: grid;
   grid-template-columns: 1fr $info-width;
   width: 100vw;
-  transition: transform .5s;
+  transition: transform 0.5s;
   section {
     pointer-events: none;
     display: grid;
@@ -138,7 +138,7 @@ section:hover > div:not(:hover) {
 #createNew {
   position: absolute;
   transform: translateX(-50%) translateY(-300%);
-  transition: transform .5s;
+  transition: transform 0.5s;
   top: 50%;
   left: 50%;
   width: 40vw;
@@ -147,7 +147,6 @@ section:hover > div:not(:hover) {
   background: linear-gradient(-30deg, rgba($bg, 0.1), rgba($bg, 0.7));
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
   color: $text;
-
 
   h1 {
     text-align: center;
@@ -224,12 +223,7 @@ section:hover > div:not(:hover) {
 }
 
 .blob {
-  @include flex-center;
-  cursor: pointer;
-  width: $blob * 1.41421356237;
-  height: $blob * 1.41421356237;
-  background-color: $header-clr;
-  border-radius: 50%;
+  @include blob;
 
   &::after,
   &::before {
@@ -242,29 +236,7 @@ section:hover > div:not(:hover) {
     transition: all 1s;
   }
 
-  &::before {
-    transform: rotate(0deg);
-  }
-
-  &:hover::before {
-    transform: rotate(405deg);
-  }
-
-  &:not(:hover)::before {
-    transform: rotate(0deg);
-  }
-
-  &::after {
-    transform: rotate(90deg);
-  }
-
-  &:hover::after {
-    transform: rotate(315deg);
-  }
-
-  &:not(:hover)::after {
-    transform: rotate(90deg);
-  }
+  @include arrow-rotate(0deg, 405deg, 90deg, 315deg);
 }
 
 .openNew {
@@ -272,7 +244,20 @@ section:hover > div:not(:hover) {
 }
 
 .closeNew {
+  background-color: #f38ba8;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+
+  @include arrow-rotate(0deg, 90deg, 405deg, 315deg);
+}
+
+.add {
+  transition: transform 0.1s;
+  background-color: #a6e3a1;
   position: absolute;
   bottom: 2%;
   right: 2%;
+
+  @include arrow-rotate(0deg, 90deg, 405deg, 315deg);
 }
