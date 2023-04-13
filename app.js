@@ -2,10 +2,9 @@ const movieSection = document.getElementById("main");
 const fragment = document.createDocumentFragment();
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("createNew");
-
+const addNewMovie = document.getElementById("")
 console.log([...blob]);
 
-[...blob].forEach((e) => e.addEventListener("click", createNew));
 
 function Movie(name, author, genre, cast, rating) {
   this.name = name;
@@ -20,6 +19,11 @@ function Movie(name, author, genre, cast, rating) {
     );
   };
 }
+function createNew() {
+    movieSection.classList.toggle("go__up");
+    addMovie.classList.toggle("go__down");
+    document.getElementById("body").classList.toggle("height100");
+  }
 
 // Movie.prototype.getInfo
 
@@ -31,12 +35,6 @@ const fightClub = new Movie(
   10
 );
 
-function createNew() {
-  console.log("bruh");
-  movieSection.classList.add("go__up");
-  addMovie.classList.add("go__down");
 
-  document.getElementById("body").classList.add("height100")
 
-}
-console.log([...movieSection.childNodes]);
+[...blob].forEach((e) => e.addEventListener("click", createNew));

@@ -1,12 +1,12 @@
 .go__up {
-  transition: transform 1.5s;
-  transform: translateX(0) translateY(300%);
+  transition: transform 0.8s;
+  transform: translateY(-400%);
 }
 
 .go__down {
-  transition: transform 1s;
-
-  transform: translateX(-50%) translateY(-50%) !important;
+  transition: transform 0.7s;
+  position: absolute;
+  transform: translate(-50%, -50%) !important;
 }
 
 .height100 {

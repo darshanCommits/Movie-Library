@@ -1,8 +1,10 @@
 @import "mixins", "reset", "variables", "js",
   url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,400;0,600;1,400&family=Ubuntu&display=swap");
 
+$body-bg: #313244;
+
 body {
-  background-color: #313244;
+  background-color: $body-bg;
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -27,7 +29,8 @@ header {
 main {
   display: grid;
   grid-template-columns: 1fr $info-width;
-
+  width: 100vw;
+  transition: transform .5s;
   section {
     pointer-events: none;
     display: grid;
@@ -44,12 +47,16 @@ main {
     position: fixed;
     right: 0;
     top: $header-height;
-    min-height: 100vh;
+    height: calc(100vh - $header-height - 2rem);
     width: $info-width;
     padding: 1rem;
     background-color: $bg;
     color: $text;
     font-size: 1.5rem;
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+
+    margin-top: 1rem;
   }
 }
 
@@ -79,6 +86,7 @@ main {
   color: $text;
   transition: all 250ms ease-in-out;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  perspective: 500px;
 
   &:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
@@ -106,7 +114,7 @@ main {
       margin-top: 0.5rem;
       text-align: right;
       font-style: italic;
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -129,7 +137,8 @@ section:hover > div:not(:hover) {
 
 #createNew {
   position: absolute;
-  transform: translateX(-50%) translateY(-300%);;
+  transform: translateX(-50%) translateY(-300%);
+  transition: transform .5s;
   top: 50%;
   left: 50%;
   width: 40vw;
@@ -138,6 +147,7 @@ section:hover > div:not(:hover) {
   background: linear-gradient(-30deg, rgba($bg, 0.1), rgba($bg, 0.7));
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
   color: $text;
+
 
   h1 {
     text-align: center;
