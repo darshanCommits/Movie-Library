@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: green;
+      }
+
+      .line {
+        height: 10px;
+        width: 50px;
+        background-color: black;
+        position: absolute;
+      }
+
+      .line1 {
+        transform: rotate(-45deg);
+      }
+      .line2 {
+        transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle">
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </div>
+  </body>
+</html>

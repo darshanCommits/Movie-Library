@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Library</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body id="body">
+    <header>
+      <h1>Movie Library</h1>
+    </header>
+
+    <main id="main">
+      <section id="movie__section">
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <hr />
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <hr />
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <hr />
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <hr />
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <hr />
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <hr />
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <hr />
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <h3>11 November 1999</h3>
+        </div>
+        <div class="card">
+          <h2>Fight Club</h2>
+          <h2>By David Fincher</h2>
+          <h3>11 November 1999</h3>
+        </div>
+      </section>
+
+      <aside>
+        <h2><u>Information</u></h2>
+        <div id="info">
+          <h3>Status</h3>
+          <h3>Watching Fight Club</h3>
+          <h3>Unwatched</h3>
+          <h3>3</h3>
+          <h3>Completed</h3>
+          <h3>2</h3>
+          <h3>Highest Rated</h3>
+          <h3>Fight Club (9)</h3>
+        </div>
+
+        <div class="blob openNew"></div>
+      </aside>
+    </main>
+
+    <div id="createNew">
+      <h1>Add New Movie</h1>
+
+      <form action="post">
+        <input type="text" name="name" id="name" placeholder="Name" />
+        <input
+          type="text"
+          name="director"
+          id="director"
+          placeholder="Director"
+        />
+        <input
+          type="text"
+          name="release"
+          id="release"
+          placeholder="Release date"
+        />
+        <input type="text" name="cast" id="cast" placeholder="Cast" />
+        <input type="text" name="plot" id="plot" placeholder="Plot" />
+
+        <div id="status">
+          <h3>Watched?</h3>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="blob closeNew"></div>
+
+        <div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+        </div>
+      </form>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

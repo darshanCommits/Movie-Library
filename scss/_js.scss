@@ -1,0 +1,16 @@
+.go__up {
+  transition: transform 1.5s;
+  transform: translateX(0) translateY(300%);
+}
+
+.go__down {
+  transition: transform 1s;
+
+  transform: translateX(-50%) translateY(-50%) !important;
+}
+
+.height100 {
+  height: 100vh;
+  width: 100vh;
+  overflow: hidden;
+}
