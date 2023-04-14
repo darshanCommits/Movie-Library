@@ -3,6 +3,8 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
+let delBtn = document.getElementsByClassName("trash-icon");
+
 let library = [];
 
 function caseFix(str) {
@@ -43,12 +45,10 @@ function addToLibrary(movie) {
 
 function createCard(movie) {
   const card = createElem("div", "", ["card"]);
-  const trash = createElem("i", "", [
-    "fa-solid",
-    "fa-trash-can",
-    "fa-xl",
-    "trash-icon",
-  ]);
+
+  const trashWrapper = createElem("div", "", ["trash-icon"]);
+  const trash = createElem("i", "", ["fa-solid", "fa-trash-can", "fa-xl"]);
+
   const title = createElem("h2", movie.title);
   const director = createElem("h2", `By ${movie.director}`);
   const plot = createElem("p", movie.plot);
@@ -56,9 +56,12 @@ function createCard(movie) {
   const releaseDate = createElem("h3", movie.release);
   const genre = createElem("h3", movie.genre);
 
-  card.append(trash, title, director, plot, hr, releaseDate, genre);
+  trashWrapper.append(trash);
+  card.append(trashWrapper, title, director, plot, hr, releaseDate, genre);
 
   movieSection.appendChild(card);
+  delBtn = document.getElementsByClassName("trash-icon");
+  console.log(delBtn);
 }
 
 function createElem(tag, text, className) {
@@ -85,4 +88,15 @@ function createNew(e) {
 
 document.getElementById("submitForm").addEventListener("click", (e) => {
   e.preventDefault();
+});
+
+[...delBtn].forEach((x) => {
+  console.log(delBtn);
+  x.addEventListener("click", (e) => {
+    console.log(23);
+    let card = e.target.closest("div.card");
+
+    card.classList.add("fade-out");
+    setTimeout(() => card.remove(), 250);
+  });
 });

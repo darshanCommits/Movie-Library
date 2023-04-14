@@ -7,3 +7,8 @@ $blob: 50px ;
 $red : #ec5663;
 $delete : #ff1d30;
 $green : #a6e3a1;
+
+
+.card.fade-out {
+    opacity: 0; /* set opacity to 0 to fade out the element */
+  }
