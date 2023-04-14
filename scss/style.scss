@@ -135,13 +135,9 @@ main {
     &:last-child {
       position: absolute;
       bottom: 1rem;
-      
       align-self: flex-end;
     }
   }
-
-
-
 }
 
 section:hover > div:not(:hover) {
@@ -179,18 +175,15 @@ section:hover > div:not(:hover) {
       margin: 1rem 0;
       width: 25vw;
 
-
-    &#submitForm {
-      pointer-events: all;
-      height: inherit;
-      width: inherit;
-      border: none;
-      border-radius: 50%;
-      color: #a6e3a1
-      
-     }
+      &#submitForm {
+        pointer-events: all;
+        height: inherit;
+        width: inherit;
+        border: none;
+        border-radius: 50%;
+        color: #a6e3a1;
+      }
     }
-
   }
 }
 
@@ -288,5 +281,3 @@ section:hover > div:not(:hover) {
 
   @include arrow-rotate-af(360deg, 270deg);
 }
-
-

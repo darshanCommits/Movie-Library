@@ -5,10 +5,12 @@ const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
 let library = [];
 
-function Movie(title, director, genre) {
+function Movie(title, director, release, genre, plot) {
   this.title = title;
   this.director = director;
+  this.release = release;
   this.genre = genre;
+  this.plot = plot;
 }
 
 document.getElementById("submitForm").addEventListener("click", (e) => {
@@ -19,9 +21,11 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 function fillDetails() {
   let title = document.getElementById("title").value;
   let director = document.getElementById("director").value;
+  let release = document.getElementById("release").value;
   let genre = document.getElementById("genre").value;
+  let plot = document.getElementById("plot").value;
 
-  return new Movie(title, director, genre);
+  return new Movie(title, director, release, genre, plot);
 }
 
 function addToLibrary(movie) {
@@ -35,12 +39,12 @@ function createCard(movie) {
 
   const title = createElem("h2", movie.title);
   const director = createElem("h2", movie.director);
-  console.log(movie.director);
-
+  const plot = createElem("p", movie.plot);
   const hr = createElem("hr");
-  const genre = createElem("h2", movie.genre);
+  const releaseDate = createElem("h3", movie.release);
+  const genre = createElem("h3", movie.genre);
 
-  card.append(title, director, hr, genre);
+  card.append(title, director, hr, releaseDate, genre, plot);
 
   movieSection.appendChild(card);
 }
