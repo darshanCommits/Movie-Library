@@ -88,6 +88,24 @@ main {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   perspective: 500px;
 
+  .trash-icon {
+    opacity: 0;
+    color: $red;
+    position: absolute;
+    align-self: flex-end;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    .trash-icon {
+      opacity: 1;
+      &:hover {
+        color: $delete;
+        transform: scale(1.5) rotate(30deg);
+      }
+    }
+  }
+
   & p {
     margin: auto 0;
   }
@@ -243,6 +261,33 @@ section:hover > div:not(:hover) {
 
 .blob {
   @include blob;
+  @include arrow-rotate(0deg, 90deg, -180deg, -90deg);
+
+
+  &.open__form__btn {
+    transition: all .1s ;
+    margin: auto 0 calc($header-height + 5vh);
+  }
+  
+  &.cancel__movie {
+    background-color: $red;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+  
+    @include arrow-rotate(405deg, 315deg, -180deg, 180deg);
+  }
+  
+  &.add__movie {
+    transition: transform 0.1s;
+    background-color: $green;
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    pointer-events: none;
+  
+    @include arrow-rotate-af(360deg, 270deg);
+  }
 
   &::after,
   &::before {
@@ -252,32 +297,9 @@ section:hover > div:not(:hover) {
     height: 8px;
     border-radius: 999px;
     background-color: $bg;
-    transition: all 1s;
+    transition: all .5s;
   }
 
-  @include arrow-rotate(0deg, 90deg, -180deg, -90deg);
 }
 
-.openNew {
-  margin: auto 0 calc($header-height + 5vh);
-}
 
-.cancel__movie {
-  background-color: #f38ba8;
-  position: absolute;
-  top: 3%;
-  right: 3%;
-
-  @include arrow-rotate(405deg, 315deg, -180deg, 180deg);
-}
-
-.add__movie {
-  transition: transform 0.1s;
-  background-color: #a6e3a1;
-  position: absolute;
-  bottom: 3%;
-  right: 3%;
-  pointer-events: none;
-
-  @include arrow-rotate-af(360deg, 270deg);
-}

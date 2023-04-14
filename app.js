@@ -24,10 +24,6 @@ function Movie(title, director, release, genre, plot) {
   this.plot = caseFix(plot);
 }
 
-document.getElementById("submitForm").addEventListener("click", (e) => {
-  e.preventDefault();
-});
-
 // Movie.prototype.getInfo
 function fillDetails() {
   let title = document.getElementById("title").value;
@@ -46,8 +42,13 @@ function addToLibrary(movie) {
 }
 
 function createCard(movie) {
-  const card = createElem("div", "", "card");
-
+  const card = createElem("div", "", ["card"]);
+  const trash = createElem("i", "", [
+    "fa-solid",
+    "fa-trash-can",
+    "fa-xl",
+    "trash-icon",
+  ]);
   const title = createElem("h2", movie.title);
   const director = createElem("h2", `By ${movie.director}`);
   const plot = createElem("p", movie.plot);
@@ -55,7 +56,7 @@ function createCard(movie) {
   const releaseDate = createElem("h3", movie.release);
   const genre = createElem("h3", movie.genre);
 
-  card.append(title, director, plot, hr, releaseDate, genre);
+  card.append(trash, title, director, plot, hr, releaseDate, genre);
 
   movieSection.appendChild(card);
 }
@@ -64,7 +65,7 @@ function createElem(tag, text, className) {
   const element = document.createElement(tag);
   if (text) element.textContent = text;
 
-  if (className) element.classList.add(className);
+  if (className) element.classList.add(...className);
 
   return element;
 }
@@ -81,3 +82,7 @@ function createNew(e) {
 }
 
 [...blob].forEach((e) => e.addEventListener("click", createNew));
+
+document.getElementById("submitForm").addEventListener("click", (e) => {
+  e.preventDefault();
+});
