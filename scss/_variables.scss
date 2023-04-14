@@ -3,12 +3,15 @@ $header-clr: hsl(235, 32%, 59%);
 $text: #c3d3e8;
 $header-height: 15vh;
 $info-width: 25vw;
-$blob: 50px ;
-$red : #ec5663;
-$delete : #ff1d30;
-$green : #a6e3a1;
-
+$blob: 50px;
+$red: #ec5663;
+$delete: #ff1d30;
+$green: #a6e3a1;
 
 .card.fade-out {
-    opacity: 0; /* set opacity to 0 to fade out the element */
-  }
+  opacity: 0; /* set opacity to 0 to fade out the element */
+}
+
+.read {
+    background: linear-gradient(top, rgba($green, .8), rgba($green, .3)) !important;
+}

@@ -3,9 +3,17 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
+const isWatched = document.getElementById("isWatched");
 let delBtn = document.getElementsByClassName("trash-icon");
-
 let library = [];
+
+function Movie(title, director, release, genre, plot) {
+  this.title = caseFix(title);
+  this.director = caseFix(director);
+  this.release = caseFix(release);
+  this.genre = caseFix(genre);
+  this.plot = caseFix(plot);
+}
 
 function caseFix(str) {
   return str
@@ -18,15 +26,6 @@ function caseFix(str) {
     .join(" ");
 }
 
-function Movie(title, director, release, genre, plot) {
-  this.title = caseFix(title);
-  this.director = caseFix(director);
-  this.release = caseFix(release);
-  this.genre = caseFix(genre);
-  this.plot = caseFix(plot);
-}
-
-// Movie.prototype.getInfo
 function fillDetails() {
   let title = document.getElementById("title").value;
   let director = document.getElementById("director").value;
@@ -37,10 +36,11 @@ function fillDetails() {
   return new Movie(title, director, release, genre, plot);
 }
 
-function addToLibrary(movie) {
-  console.log(movie.title);
-  library.push(movie);
-  createCard(movie);
+function createElem(tag, text, className) {
+  const element = document.createElement(tag);
+  if (text) element.textContent = text;
+  if (className) element.classList.add(...className);
+  return element;
 }
 
 function createCard(movie) {
@@ -58,25 +58,29 @@ function createCard(movie) {
 
   trashWrapper.append(trash);
   card.append(trashWrapper, title, director, plot, hr, releaseDate, genre);
-
   movieSection.appendChild(card);
-  delBtn = document.getElementsByClassName("trash-icon");
-  console.log(delBtn);
+
+  trashWrapper.addEventListener("click", () => {
+    card.classList.add("fade-out");
+    setTimeout(() => card.remove(), 250);
+  });
+
+  isWatched.addEventListener("change", () => {
+    if (this.checked) {
+      console.log("color");
+      card.classList.add("read");
+    }
+  });
 }
 
-function createElem(tag, text, className) {
-  const element = document.createElement(tag);
-  if (text) element.textContent = text;
-
-  if (className) element.classList.add(...className);
-
-  return element;
+function addToLibrary(movie) {
+  library.push(movie);
+  createCard(movie);
 }
 
 function createNew(e) {
   if (e.target.id === "submitForm") {
-    let movie = fillDetails();
-    addToLibrary(movie);
+    addToLibrary(fillDetails());
   }
 
   main.classList.toggle("go__up");
