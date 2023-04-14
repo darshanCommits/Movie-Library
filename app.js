@@ -3,7 +3,6 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
-const isWatched = document.getElementById("isWatched");
 let delBtn = document.getElementsByClassName("trash-icon");
 let library = [];
 
@@ -65,12 +64,7 @@ function createCard(movie) {
     setTimeout(() => card.remove(), 250);
   });
 
-  isWatched.addEventListener("change", () => {
-    if (this.checked) {
-      console.log("color");
-      card.classList.add("read");
-    }
-  });
+
 }
 
 function addToLibrary(movie) {

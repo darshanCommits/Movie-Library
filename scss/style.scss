@@ -177,10 +177,10 @@ section:hover > div:not(:hover) {
   color: $text;
 
   h1 {
-    text-align: center;
+    font-family: "Spline Sans Mono", sans-serif;
     font-size: 1.5rem;
     color: $text;
-    margin-bottom: 1rem;
+    margin: 1rem;
   }
 
   form {
