@@ -3,8 +3,11 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
-let isWatched;
+const cards = document.getElementsByClassName("card");
+const info = document.getElementById("info");
+let isWatched = document.getElementsByClassName("status");
 let delBtn = document.getElementsByClassName("trash-icon");
+
 let library = [];
 
 function Movie(title, director, release, genre, plot) {
@@ -44,51 +47,75 @@ function createElem(tag, text, className) {
   return element;
 }
 
+function updateInfo(e) {
+  const cardChildren = [...e.target.closest("div.card").children];
+  const infoChildren = [...info.children];
+  const prop = ["title", "director", "plot", "releaseDate", "genre"];
+
+  console.log(infoChildren);
+
+  for (let i = 1; i <= 7; i = i + 2) {
+    infoChildren[i].textContent = movie[prop[(i - 1) / 2]];
+  }
+}
+
 function createCard(movie) {
   const card = createElem("div", "", ["card"]);
+  {
+    const readWrapper = createElem("div", "", ["cross-icon", "icon", "status"]);
+    const read = createElem("i", "", ["fa-solid", "fa-x", "fa-xl"]);
+    readWrapper.append(read);
 
-  const readWrapper = createElem("div", "", ["cross-icon", "icon", "status"]);
-  const read = createElem("i", "", ["fa-solid", "fa-x", "fa-xl"]);
-  readWrapper.append(read);
+    const notRead = createElem("i", "", [
+      "fa-solid",
+      "fa-x",
+      "fa-xl",
+      "cross-icon",
+      "icon",
+      "status",
+    ]);
 
-  const notRead = createElem("i", "", [
-    "fa-solid",
-    "fa-x",
-    "fa-xl",
-    "cross-icon",
-    "icon",
-    "status",
-  ]);
+    const trashWrapper = createElem("div", "", ["trash-icon", "icon"]);
+    const trash = createElem("i", "", ["fa-solid", "fa-trash-can", "fa-xl"]);
+    trashWrapper.append(trash);
 
-  const trashWrapper = createElem("div", "", ["trash-icon", "icon"]);
-  const trash = createElem("i", "", ["fa-solid", "fa-trash-can", "fa-xl"]);
-  trashWrapper.append(trash);
+    const title = createElem("h2", movie.title, ["title"]);
+    const director = createElem("h2", `By ${movie.director}`, ["director"]);
+    const plot = createElem("p", movie.plot, ["plot"]);
+    const hr = createElem("hr");
+    const releaseDate = createElem("h3", movie.release, ["release"]);
+    const genre = createElem("h3", movie.genre, ["genre"]);
 
-  const title = createElem("h2", movie.title);
-  const director = createElem("h2", `By ${movie.director}`);
-  const plot = createElem("p", movie.plot);
-  const hr = createElem("hr");
-  const releaseDate = createElem("h3", movie.release);
-  const genre = createElem("h3", movie.genre);
-
-  card.append(
-    readWrapper,
-    trashWrapper,
-    title,
-    director,
-    plot,
-    hr,
-    releaseDate,
-    genre
-  );
+    card.append(
+      readWrapper,
+      trashWrapper,
+      title,
+      director,
+      plot,
+      hr,
+      releaseDate,
+      genre
+    );
+  }
 
   movieSection.appendChild(card);
-  isWatched = document.getElementsByClassName("status");
+
+  [...delBtn].forEach((x) => {
+    x.addEventListener("click", (e) => {
+      let card = e.target.closest("div.card");
+      card.classList.add("fade-out");
+      setTimeout(() => card.remove(), 250);
+    });
+  });
+
+  [...cards].forEach((x) => {
+    x.addEventListener("click", updateInfo);
+  });
+
   [...isWatched].forEach((x) => {
     x.addEventListener("click", (e) => {
       let parent = card.children[0];
       let svg = [...parent.children][0];
-      console.log(svg);
 
       parent.classList.toggle(["check-icon"]);
       parent.classList.toggle(["cross-icon"]);
@@ -118,13 +145,4 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
   e.preventDefault();
 });
 
-[...blob].forEach((e) => e.addEventListener("click", createNew));
-
-[...delBtn].forEach((x) => {
-  x.addEventListener("click", (e) => {
-    let card = e.target.closest("div.card");
-
-    card.classList.add("fade-out");
-    setTimeout(() => card.remove(), 250);
-  });
-});
+[...blob].forEach((x) => x.addEventListener("click", createNew));
