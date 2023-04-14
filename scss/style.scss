@@ -135,7 +135,7 @@ section:hover > div:not(:hover) {
   opacity: 0.7;
 }
 
-#createNew {
+#create__new__card {
   position: absolute;
   transform: translateX(-50%) translateY(-300%);
   transition: transform 0.5s;
@@ -236,28 +236,28 @@ section:hover > div:not(:hover) {
     transition: all 1s;
   }
 
-  @include arrow-rotate(0deg, 405deg, 90deg, 315deg);
+  @include arrow-rotate(0deg, 90deg, -180deg, -90deg);
 }
 
 .openNew {
   margin: auto 0 calc($header-height + 5vh);
 }
 
-.closeNew {
+.cancel__movie {
   background-color: #f38ba8;
   position: absolute;
-  top: 2%;
-  right: 2%;
+  top: 3%;
+  right: 3%;
 
-  @include arrow-rotate(0deg, 90deg, 405deg, 315deg);
+  @include arrow-rotate(405deg, 315deg, -180deg, 180deg);
 }
 
-.add {
+.add__movie {
   transition: transform 0.1s;
   background-color: #a6e3a1;
   position: absolute;
-  bottom: 2%;
-  right: 2%;
+  bottom: 3%;
+  right: 3%;
 
-  @include arrow-rotate(0deg, 90deg, 405deg, 315deg);
+  @include arrow-rotate-af(360deg, 270deg);
 }

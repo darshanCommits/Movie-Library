@@ -1,11 +1,8 @@
 const movieSection = document.getElementById("main");
 const fragment = document.createDocumentFragment();
 const blob = document.getElementsByClassName("blob");
-const addMovie = document.getElementById("createNew");
-const addNewMovie = document.getElementById("newMovie");
-
-console.log(addNewMovie[0]);
-
+const addMovie = document.getElementById("create__new__card");
+const addNewMovie = document.getElementById("new__movie__form");
 
 function Movie(name, author, genre, cast, rating) {
   this.name = name;
@@ -20,11 +17,27 @@ function Movie(name, author, genre, cast, rating) {
     );
   };
 }
-function createNew() {
-    movieSection.classList.toggle("go__up");
-    addMovie.classList.toggle("go__down");
-    document.getElementById("body").classList.toggle("height100");
+
+function fillDetails(movieName) {
+  const details = ["name", "author", "genre", "cast", "rating"];
+
+  let i = 0;
+  for (const detail of details) {
+    this.detail = addNewMovie[i].value;
+    i++;
   }
+
+  return movieName;
+}
+
+let bruh = fillDetails("bruh");
+
+function createNew() {
+  movieSection.classList.toggle("go__up");
+  addMovie.classList.toggle("go__down");
+  document.getElementById("body").classList.toggle("height100");
+  console.log(addNewMovie[0].value);
+}
 
 // Movie.prototype.getInfo
 
@@ -35,7 +48,5 @@ const fightClub = new Movie(
   "Bradd Pitt",
   10
 );
-
-
 
 [...blob].forEach((e) => e.addEventListener("click", createNew));
