@@ -17,8 +17,10 @@
         <div class="card">
           <h2>Fight Club</h2>
           <h2>By David Fincher</h2>
+          <p></p>
           <hr />
           <h3>11 November 1999</h3>
+          <h3>Psychological</h3>
         </div>
         <div class="card">
           <h2>Fight Club</h2>
@@ -74,7 +76,7 @@
       <h1>Add New Movie</h1>
 
       <form action="post" id="new__movie__form">
-        <input type="text" name="name" id="name" placeholder="Name" />
+        <input type="text" name="title" id="title" placeholder="Title" />
         <input
           type="text"
           name="director"
@@ -83,9 +85,9 @@
         />
         <input
           type="text"
-          name="release"
-          id="release"
-          placeholder="Release date"
+          name="genre"
+          id="genre"
+          placeholder="Genre"
         />
         <input type="text" name="cast" id="cast" placeholder="Cast" />
         <input type="text" name="plot" id="plot" placeholder="Plot" />
@@ -98,7 +100,9 @@
           </label>
         </div>
         <div class="blob cancel__movie"></div>
-        <div class="blob add__movie"></div>
+        <div class="blob add__movie">
+            <input id="submitForm" type="submit">
+        </div>
 
         <div>
           <div class="star"></div>

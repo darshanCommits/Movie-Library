@@ -88,6 +88,10 @@ main {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   perspective: 500px;
 
+  & p {
+    margin: 1rem 0;
+  }
+
   &:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
@@ -122,12 +126,22 @@ main {
     border: 1px solid rgba($text, 0.2);
     border-radius: 10%;
     margin-top: auto;
+  }
 
-    & + h3 {
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
+  h3 {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+
+    &:last-child {
+      position: absolute;
+      bottom: 1rem;
+      
+      align-self: flex-end;
     }
   }
+
+
+
 }
 
 section:hover > div:not(:hover) {
@@ -164,7 +178,19 @@ section:hover > div:not(:hover) {
       border-bottom: 1px solid rgba($text, 0.1);
       margin: 1rem 0;
       width: 25vw;
+
+
+    &#submitForm {
+      pointer-events: all;
+      height: inherit;
+      width: inherit;
+      border: none;
+      border-radius: 50%;
+      color: #a6e3a1
+      
+     }
     }
+
   }
 }
 
@@ -204,7 +230,7 @@ section:hover > div:not(:hover) {
     position: absolute;
     cursor: pointer;
     inset: 0;
-    background-color: #313244;
+    background-color: $body-bg;
     border-radius: 999px;
     transition: 400ms;
 
@@ -258,6 +284,9 @@ section:hover > div:not(:hover) {
   position: absolute;
   bottom: 3%;
   right: 3%;
+  pointer-events: none;
 
   @include arrow-rotate-af(360deg, 270deg);
 }
+
+
