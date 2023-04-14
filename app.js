@@ -3,7 +3,7 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
-let isWatched = document.getElementsByClassName("status");
+let isWatched;
 let delBtn = document.getElementsByClassName("trash-icon");
 let library = [];
 
@@ -46,9 +46,10 @@ function createElem(tag, text, className) {
 
 function createCard(movie) {
   const card = createElem("div", "", ["card"]);
-  const readWrapper = createElem("div", "", ["check-icon", "icon", "status"]);
 
-  const read = createElem("i", "", ["fa-solid", "fa-check", "fa-xl"]);
+  const readWrapper = createElem("div", "", ["cross-icon", "icon", "status"]);
+  const read = createElem("i", "", ["fa-solid", "fa-x", "fa-xl"]);
+  readWrapper.append(read);
 
   const notRead = createElem("i", "", [
     "fa-solid",
@@ -58,10 +59,6 @@ function createCard(movie) {
     "icon",
     "status",
   ]);
-
-  read.addEventListener("click", () => {
-    movie.watched = !movie.watched;
-  });
 
   const trashWrapper = createElem("div", "", ["trash-icon", "icon"]);
   const trash = createElem("i", "", ["fa-solid", "fa-trash-can", "fa-xl"]);
@@ -75,7 +72,7 @@ function createCard(movie) {
   const genre = createElem("h3", movie.genre);
 
   card.append(
-    movie.watched ? read : notRead,
+    readWrapper,
     trashWrapper,
     title,
     director,
@@ -86,6 +83,20 @@ function createCard(movie) {
   );
 
   movieSection.appendChild(card);
+  isWatched = document.getElementsByClassName("status");
+  [...isWatched].forEach((x) => {
+    x.addEventListener("click", (e) => {
+      let parent = card.children[0];
+      let svg = [...parent.children][0];
+      console.log(svg);
+
+      parent.classList.toggle(["check-icon"]);
+      parent.classList.toggle(["cross-icon"]);
+
+      svg.classList.toggle(["fa-x"]);
+      svg.classList.toggle(["fa-check"]);
+    });
+  });
 }
 
 function addToLibrary(movie) {
@@ -103,25 +114,17 @@ function createNew(e) {
   document.getElementById("body").classList.toggle("height100");
 }
 
-[...blob].forEach((e) => e.addEventListener("click", createNew));
-
 document.getElementById("submitForm").addEventListener("click", (e) => {
   e.preventDefault();
 });
 
+[...blob].forEach((e) => e.addEventListener("click", createNew));
+
 [...delBtn].forEach((x) => {
-  console.log(delBtn);
   x.addEventListener("click", (e) => {
-    console.log(23);
     let card = e.target.closest("div.card");
 
     card.classList.add("fade-out");
     setTimeout(() => card.remove(), 250);
-  });
-});
-
-[...isWatched].forEach((x) => {
-  x.addEventListener("click", (e) => {
-    console.log(e.target);
   });
 });

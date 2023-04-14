@@ -88,19 +88,46 @@ main {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   perspective: 500px;
 
+  &:hover {
+    .icon {
+      opacity: 1;
+    }
+  }
+
   .icon {
     opacity: 0;
-    color: $red;
     position: absolute;
     transition: all 0.3s;
 
+    &.status {
+      // margin-top: 5rem;
+      bottom: 20%;
+      align-self: flex-end;
+    }
+
     &.check-icon {
       color: $green;
+
+      &:hover {
+        color: $red;
+        transform: scale(1.5) rotate(360deg);
+      }
+    }
+
+    &.cross-icon {
+      color: $red;
+
+      &:hover {
+        color: $green;
+        transform: scale(1.5) rotate(-180deg);
+      }
     }
 
     &.trash-icon {
+      color: $red;
+
       align-self: flex-end;
-  
+
       &:hover {
         color: $delete;
         transform: scale(1.5) rotate(30deg);
@@ -108,11 +135,7 @@ main {
     }
   }
 
-  &:hover {
-    .icon {
-      opacity: 1;
-    }
-  }
+ 
 
   & p {
     margin: auto 0;
@@ -138,6 +161,7 @@ main {
 
   h2:first-of-type {
     font-size: 2rem;
+    margin: 0 1rem;
     text-align: center;
 
     & + h2 {
