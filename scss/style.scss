@@ -88,21 +88,29 @@ main {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   perspective: 500px;
 
-  .trash-icon {
+  .icon {
     opacity: 0;
     color: $red;
     position: absolute;
-    align-self: flex-end;
     transition: all 0.3s;
-  }
 
-  &:hover {
-    .trash-icon {
-      opacity: 1;
+    &.check-icon {
+      color: $green;
+    }
+
+    &.trash-icon {
+      align-self: flex-end;
+  
       &:hover {
         color: $delete;
         transform: scale(1.5) rotate(30deg);
       }
+    }
+  }
+
+  &:hover {
+    .icon {
+      opacity: 1;
     }
   }
 
@@ -263,21 +271,20 @@ section:hover > div:not(:hover) {
   @include blob;
   @include arrow-rotate(0deg, 90deg, -180deg, -90deg);
 
-
   &.open__form__btn {
-    transition: all .1s ;
+    transition: all 0.1s;
     margin: auto 0 calc($header-height + 5vh);
   }
-  
+
   &.cancel__movie {
     background-color: $red;
     position: absolute;
     top: 3%;
     right: 3%;
-  
+
     @include arrow-rotate(405deg, 315deg, -180deg, 180deg);
   }
-  
+
   &.add__movie {
     transition: transform 0.1s;
     background-color: $green;
@@ -285,7 +292,7 @@ section:hover > div:not(:hover) {
     bottom: 3%;
     right: 3%;
     pointer-events: none;
-  
+
     @include arrow-rotate-af(360deg, 270deg);
   }
 
@@ -297,9 +304,6 @@ section:hover > div:not(:hover) {
     height: 8px;
     border-radius: 999px;
     background-color: $bg;
-    transition: all .5s;
+    transition: all 0.5s;
   }
-
 }
-
-

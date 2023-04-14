@@ -3,6 +3,7 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
+let isWatched = document.getElementsByClassName("status");
 let delBtn = document.getElementsByClassName("trash-icon");
 let library = [];
 
@@ -12,6 +13,7 @@ function Movie(title, director, release, genre, plot) {
   this.release = caseFix(release);
   this.genre = caseFix(genre);
   this.plot = caseFix(plot);
+  this.watched = false;
 }
 
 function caseFix(str) {
@@ -44,9 +46,26 @@ function createElem(tag, text, className) {
 
 function createCard(movie) {
   const card = createElem("div", "", ["card"]);
+  const readWrapper = createElem("div", "", ["check-icon", "icon", "status"]);
 
-  const trashWrapper = createElem("div", "", ["trash-icon"]);
+  const read = createElem("i", "", ["fa-solid", "fa-check", "fa-xl"]);
+
+  const notRead = createElem("i", "", [
+    "fa-solid",
+    "fa-x",
+    "fa-xl",
+    "cross-icon",
+    "icon",
+    "status",
+  ]);
+
+  read.addEventListener("click", () => {
+    movie.watched = !movie.watched;
+  });
+
+  const trashWrapper = createElem("div", "", ["trash-icon", "icon"]);
   const trash = createElem("i", "", ["fa-solid", "fa-trash-can", "fa-xl"]);
+  trashWrapper.append(trash);
 
   const title = createElem("h2", movie.title);
   const director = createElem("h2", `By ${movie.director}`);
@@ -55,16 +74,18 @@ function createCard(movie) {
   const releaseDate = createElem("h3", movie.release);
   const genre = createElem("h3", movie.genre);
 
-  trashWrapper.append(trash);
-  card.append(trashWrapper, title, director, plot, hr, releaseDate, genre);
+  card.append(
+    movie.watched ? read : notRead,
+    trashWrapper,
+    title,
+    director,
+    plot,
+    hr,
+    releaseDate,
+    genre
+  );
+
   movieSection.appendChild(card);
-
-  trashWrapper.addEventListener("click", () => {
-    card.classList.add("fade-out");
-    setTimeout(() => card.remove(), 250);
-  });
-
-
 }
 
 function addToLibrary(movie) {
@@ -96,5 +117,11 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 
     card.classList.add("fade-out");
     setTimeout(() => card.remove(), 250);
+  });
+});
+
+[...isWatched].forEach((x) => {
+  x.addEventListener("click", (e) => {
+    console.log(e.target);
   });
 });
