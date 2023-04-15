@@ -4,6 +4,27 @@
   align-items: #{if($vertical, "center", "flex-start")};
 }
 
+@mixin fancy-bg() {
+  background-color: #232221;
+  background-image: radial-gradient(
+      circle at 100% 50%,
+      transparent 1rem,
+      $header-clr 1rem,
+      $header-clr 1.5rem,
+      transparent 1.5rem
+    ),
+    radial-gradient(
+      circle at 0% 50%,
+      transparent 1rem,
+      $header-clr 1rem,
+      $header-clr 1.5rem,
+      transparent 1.5rem
+    ),
+    linear-gradient(-45deg, $bg, rgba($bg, 0.7));
+  background-size: 8rem 5rem, 8rem 5rem, 100% 100%;
+  background-position: 0 0, 0 2.5rem;
+}
+
 @mixin blob() {
   @include flex-center;
   cursor: pointer;

@@ -72,6 +72,31 @@ function deleteFn(e) {
   setTimeout(() => card.remove(), 250);
 }
 
+function toggleRead(card) {
+  let parent = card.children[0];
+  let svg = [...parent.children][0];
+
+  parent.classList.toggle(["check-icon"]);
+  parent.classList.toggle(["cross-icon"]);
+
+  svg.classList.toggle(["fa-x"]);
+  svg.classList.toggle(["fa-check"]);
+}
+
+function addToLibrary(movie) {
+  library.push(movie);
+  createCard(movie);
+}
+
+function createNew(e) {
+  if (e.target.id === "submitForm") {
+    addToLibrary(fillDetails());
+  }
+  main.classList.toggle("go__up");
+  addMovie.classList.toggle("go__down");
+  document.getElementById("body").classList.toggle("height100");
+}
+
 function createCard(movie) {
   const card = createElem("div", "", ["card"]);
   {
@@ -103,34 +128,6 @@ function createCard(movie) {
   }
 
   movieSection.appendChild(card);
-
-  [...isWatched].forEach((x) => {
-    x.addEventListener("click", () => {
-      let parent = card.children[0];
-      let svg = [...parent.children][0];
-
-      parent.classList.toggle(["check-icon"]);
-      parent.classList.toggle(["cross-icon"]);
-
-      svg.classList.toggle(["fa-x"]);
-      svg.classList.toggle(["fa-check"]);
-    });
-  });
-}
-
-function addToLibrary(movie) {
-  library.push(movie);
-  createCard(movie);
-}
-
-function createNew(e) {
-  if (e.target.id === "submitForm") {
-    addToLibrary(fillDetails());
-  }
-
-  main.classList.toggle("go__up");
-  addMovie.classList.toggle("go__down");
-  document.getElementById("body").classList.toggle("height100");
 }
 
 document.getElementById("submitForm").addEventListener("click", (e) => {
@@ -140,16 +137,26 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 [...blob].forEach((x) => x.addEventListener("click", createNew));
 
 document.body.addEventListener("click", (e) => {
-  if (e.target.parentElement.classList.contains("fa-trash-can")) {
+  let card = e.target.closest("div.card");
+
+  if (e.target.parentNode.classList.contains("fa-trash-can")) {
     deleteFn(e);
   }
 
-  console.log(e.target);
+  console.log(card);
+
+  if (e.target.parentNode.classList.contains("status")) {
+    toggleRead(card);
+  }
 
   if (
     e.target.classList.contains("card") ||
-    e.target.parentElement.classList.contains("card")
+    e.target.parentNode.classList.contains("card")
   ) {
     updateInfo(e);
   }
 });
+
+// [...isWatched].forEach((x) => {
+//   x.addEventListener("click");
+// });
