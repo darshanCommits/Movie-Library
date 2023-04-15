@@ -7,7 +7,6 @@ const cards = document.getElementsByClassName("card");
 const info = document.getElementById("info");
 let isWatched = document.getElementsByClassName("status");
 let delBtn = document.getElementsByClassName("trash-icon");
-
 let library = [];
 
 function Movie(title, director, release, genre, plot) {
@@ -48,15 +47,23 @@ function createElem(tag, text, className) {
 }
 
 function updateInfo(e) {
-  const cardChildren = [...e.target.closest("div.card").children];
-  const infoChildren = [...info.children];
-  const prop = ["title", "director", "plot", "releaseDate", "genre"];
 
-  console.log(infoChildren);
-
-  for (let i = 1; i <= 7; i = i + 2) {
-    infoChildren[i].textContent = movie[prop[(i - 1) / 2]];
+  // not good
+  function valueInCard(i) {
+    const infoChildren = [...info.children][i].children[1].textContent;
+    return infoChildren;
   }
+
+  // good
+
+  function valueInTab(i) {
+    const cardChildren = [...e.target.closest("div.card").children][i]
+      .textContent;
+    return cardChildren;
+  }
+
+  console.log([...info.children][i].children[1].textContent);
+
 }
 
 function createCard(movie) {
@@ -108,10 +115,6 @@ function createCard(movie) {
     });
   });
 
-  [...cards].forEach((x) => {
-    x.addEventListener("click", updateInfo);
-  });
-
   [...isWatched].forEach((x) => {
     x.addEventListener("click", (e) => {
       let parent = card.children[0];
@@ -146,3 +149,9 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 });
 
 [...blob].forEach((x) => x.addEventListener("click", createNew));
+
+[...cards].forEach((x) => {
+  x.addEventListener("click", (e) => {
+    updateInfo(e);
+  });
+});

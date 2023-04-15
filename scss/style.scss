@@ -61,10 +61,28 @@ main {
 }
 
 #info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  // grid-template-columns: repeat(2, 1fr);
   padding: 1rem;
   gap: 1rem;
+  margin-top: 2rem ;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+
+    h3,p {
+      justify-self: flex-end;
+      // text-align: center;
+    }
+
+    p {
+      width: 55%;
+      text-align: right;
+      font-size: 0.8rem;
+    }
+  }
 
   h3:nth-child(odd) {
     font-size: 1rem;
@@ -135,11 +153,6 @@ main {
     }
   }
 
- 
-
-  & p {
-    margin: auto 0;
-  }
 
   &:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
@@ -165,7 +178,7 @@ main {
     text-align: center;
 
     & + h2 {
-      margin-top: 0.5rem;
+      margin: 0.5rem 0 1rem;
       text-align: right;
       font-style: italic;
       font-size: 0.8rem;
@@ -296,8 +309,9 @@ section:hover > div:not(:hover) {
   @include arrow-rotate(0deg, 90deg, -180deg, -90deg);
 
   &.open__form__btn {
-    transition: all 0.1s;
-    margin: auto 0 calc($header-height + 5vh);
+    // margin: auto 0 calc($header-height - 5rem);
+    position: absolute;
+    bottom: 5%;
   }
 
   &.cancel__movie {
