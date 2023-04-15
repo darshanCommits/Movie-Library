@@ -3,7 +3,7 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
-const cards = document.getElementsByClassName("card");
+let cards = document.getElementsByClassName("card");
 const info = document.getElementById("info");
 let isWatched = document.getElementsByClassName("status");
 let delBtn = document.getElementsByClassName("trash-icon");
@@ -66,6 +66,12 @@ function updateInfo(e) {
   }
 }
 
+function deleteFn(e) {
+  let card = e.target.closest("div.card");
+  card.classList.add("fade-out");
+  setTimeout(() => card.remove(), 250);
+}
+
 function createCard(movie) {
   const card = createElem("div", "", ["card"]);
   {
@@ -98,16 +104,8 @@ function createCard(movie) {
 
   movieSection.appendChild(card);
 
-  [...delBtn].forEach((x) => {
-    x.addEventListener("click", (e) => {
-      let card = e.target.closest("div.card");
-      card.classList.add("fade-out");
-      setTimeout(() => card.remove(), 250);
-    });
-  });
-
   [...isWatched].forEach((x) => {
-    x.addEventListener("click", (e) => {
+    x.addEventListener("click", () => {
       let parent = card.children[0];
       let svg = [...parent.children][0];
 
@@ -141,8 +139,17 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 
 [...blob].forEach((x) => x.addEventListener("click", createNew));
 
-[...cards].forEach((x) => {
-  x.addEventListener("click", (e) => {
+document.body.addEventListener("click", (e) => {
+  if (e.target.parentElement.classList.contains("fa-trash-can")) {
+    deleteFn(e);
+  }
+
+  console.log(e.target);
+
+  if (
+    e.target.classList.contains("card") ||
+    e.target.parentElement.classList.contains("card")
+  ) {
     updateInfo(e);
-  });
+  }
 });
