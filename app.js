@@ -73,15 +73,6 @@ function createCard(movie) {
     const read = createElem("i", "", ["fa-solid", "fa-x", "fa-xl"]);
     readWrapper.append(read);
 
-    const notRead = createElem("i", "", [
-      "fa-solid",
-      "fa-x",
-      "fa-xl",
-      "cross-icon",
-      "icon",
-      "status",
-    ]);
-
     const trashWrapper = createElem("div", "", ["trash-icon", "icon"]);
     const trash = createElem("i", "", ["fa-solid", "fa-trash-can", "fa-xl"]);
     trashWrapper.append(trash);
