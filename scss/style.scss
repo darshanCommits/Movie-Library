@@ -66,14 +66,15 @@ main {
   // grid-template-columns: repeat(2, 1fr);
   padding: 1rem;
   gap: 1rem;
-  margin-top: 2rem ;
-  transition: all .3s;
+  margin-top: 2rem;
+  transition: all 0.3s;
 
   > div {
     display: flex;
     justify-content: space-between;
 
-    h3,p {
+    h3,
+    p {
       justify-self: flex-end;
       // text-align: center;
     }
@@ -144,7 +145,6 @@ main {
 
     &.trash-icon {
       color: $red;
-
       align-self: flex-end;
 
       &:hover {
@@ -153,7 +153,6 @@ main {
       }
     }
   }
-
 
   &:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
