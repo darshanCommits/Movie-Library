@@ -47,23 +47,24 @@ function createElem(tag, text, className) {
 }
 
 function updateInfo(e) {
+  const info = document.getElementById("info");
 
-  // not good
-  function valueInCard(i) {
-    const infoChildren = [...info.children][i].children[1].textContent;
-    return infoChildren;
+  function textOfCard(i) {
+    const text = [...e.target.closest("div.card").children][i].textContent;
+    return text;
   }
 
-  // good
+  const textOfInfo = (i, text) => {
+    [...info.children][i].children[1].textContent = text;
+  };
 
-  function valueInTab(i) {
-    const cardChildren = [...e.target.closest("div.card").children][i]
-      .textContent;
-    return cardChildren;
+  for (i = 0; i <= 4; i++) {
+    let j = i + 2;
+    if (j === 5) j++;
+
+    const cardText = textOfCard(j);
+    textOfInfo(i, cardText);
   }
-
-  console.log([...info.children][i].children[1].textContent);
-
 }
 
 function createCard(movie) {
