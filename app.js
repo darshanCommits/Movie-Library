@@ -60,8 +60,7 @@ function updateInfo(e) {
 
   for (i = 0; i <= 4; i++) {
     let j = i + 2;
-    if (j === 5) j++;
-
+    if (j >= 5) j++;
     const cardText = textOfCard(j);
     textOfInfo(i, cardText);
   }
