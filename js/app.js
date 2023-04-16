@@ -47,13 +47,6 @@ function fillDetails() {
   return new Movie(title, director, release, genre, plot);
 }
 
-function createElem(tag, text, className) {
-  const element = document.createElement(tag);
-  if (text) element.textContent = text;
-  if (className) element.classList.add(...className);
-  return element;
-}
-
 function addToLibrary(movie) {
   library.push(movie);
   createCard(movie, library.length - 1);
@@ -76,10 +69,18 @@ function createNew(e) {
 function deleteWelcomeScreen() {
   welcome.remove();
   root.classList.remove("welcome-remove");
-  root.style.setProperty("--info-width", "calc(10rem + 12vw)");
+  if (!mediaQuery.matches)
+    root.style.setProperty("--info-width", "calc(10rem + 12vw)");
 }
 
 function createCard(movie, index) {
+  const createElem = (tag, text, className) => {
+    const element = document.createElement(tag);
+    if (text) element.textContent = text;
+    if (className) element.classList.add(...className);
+    return element;
+  };
+
   const card = createElem("div", "", ["card"]);
   {
     const readWrapper = createElem("div", "", ["cross-icon", "icon", "status"]);
@@ -113,7 +114,7 @@ function createCard(movie, index) {
   movieSection.appendChild(card);
 }
 
-function updateInfo(e, card) {
+function updateInfo(card) {
   const info = document.getElementById("info");
   const movie = getMovieObjectWithCardIndex(card);
   const textOfInfo = (i, text) => {
@@ -151,10 +152,11 @@ function toggleRead(card) {
 function mobileAside() {
   root.classList.toggle("mobile-yes-open");
   root.classList.toggle("mobile-not-open");
-  root.style.setProperty(
-    "--info-width",
-    infoWidth !== "20rem" ? "20rem" : "2rem"
-  );
+
+  let result =
+    root.style.getPropertyValue("--info-width") === "20rem" ? "2rem" : "20rem";
+
+  root.style.setProperty("--info-width", result);
 }
 
 document.getElementById("submitForm").addEventListener("click", (e) => {
@@ -171,7 +173,7 @@ document.body.addEventListener("click", (e) => {
   } else if (e.target.closest(".status")) {
     toggleRead(card);
   } else if (e.target.closest(".card")) {
-    updateInfo(e, card);
+    updateInfo(card);
   }
 });
 
