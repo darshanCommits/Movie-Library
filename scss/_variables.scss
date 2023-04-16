@@ -4,8 +4,11 @@ $text: #c3d3e8;
 $red: #ec5663;
 $delete: #ff1d30;
 $green: #a6e3a1;
+$body-bg: #313244;
 
-$blob: 50px;
+$font-h1: calc(1vw + 1rem);
+$font-h2: 1.5rem;
+$font-para : max(1.3vw, 0.8rem);
+$blob: 1.9rem;
 $header-height: 15vh;
 $info-width: calc(10rem + 12vw);
-$font-p : 0.8rem;

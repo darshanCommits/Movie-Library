@@ -1,0 +1,34 @@
+@media only screen and (max-width: 1150px) {
+  section {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  section {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+}
+
+@media only screen and (max-width: 550px) {
+  $new-info-width: 2rem;
+
+  body {
+    main {
+      grid-template-columns: 1fr $new-info-width;
+
+      aside {
+        width: $new-info-width;
+
+         h2, h3, p, .blob {
+          opacity: 0;
+        }
+
+        &:hover {
+          $new-info-width: $info-width;
+        }
+      }
+    }
+  }
+}

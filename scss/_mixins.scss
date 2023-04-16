@@ -74,3 +74,9 @@
     transform: rotate($rotate-after);
   }
 }
+
+@mixin media-breakpoint($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}

@@ -1,9 +1,6 @@
-@import "mixins", "reset", "variables", "js",
+@import "mixins", "reset", "variables", "js", "mediaQuery",
   url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,400;0,600;1,400&family=Ubuntu&display=swap");
 
-$body-bg: #313244;
-$font-h1: calc(1vw + 1rem);
-$font-h2: 1.5rem;
 
 body {
   font-family: "Ubuntu", sans-serif;
@@ -38,6 +35,7 @@ main {
   grid-template-columns: 1fr $info-width;
   width: 100vw;
   transition: transform 0.5s;
+
   section {
     pointer-events: none;
     display: grid;
@@ -73,7 +71,7 @@ aside {
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     transition: all 0.3s;
     width: 100%;
 
@@ -85,7 +83,7 @@ aside {
         width: 55%;
         text-align: right;
         align-self: flex-end;
-        font-size: $font-p;
+        font-size: calc($font-para - .15rem);
       }
     }
 
@@ -175,7 +173,7 @@ aside {
   }
 
   p {
-    font-size: $font-p !important;
+    font-size: $font-para;
   }
 
   h2:first-of-type {
@@ -220,7 +218,7 @@ section:hover > div:not(:hover) {
   transition: transform 0.5s;
   top: 50%;
   left: 50%;
-  width: 40vw;
+  width: clamp(20rem, 50rem, 50vw);
   border-radius: 9px;
   padding: 1rem;
   background: linear-gradient(-30deg, rgba($bg, 0.1), rgba($bg, 0.7));
@@ -242,7 +240,7 @@ section:hover > div:not(:hover) {
       all: unset;
       border-bottom: 1px solid rgba($text, 0.1);
       margin: 1rem 0;
-      width: 25vw;
+      width: clamp(10rem, 30rem, 35vw);
 
       &#submitForm {
         pointer-events: all;
