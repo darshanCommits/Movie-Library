@@ -1,4 +1,4 @@
-@import "mixins", "reset", "variables", "js", "functions",
+@import "mixins", "reset", "variables", "js",
   url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,400;0,600;1,400&family=Ubuntu&display=swap");
 
 $body-bg: #313244;
@@ -176,7 +176,6 @@ aside {
 
   p {
     font-size: $font-p !important;
-
   }
 
   h2:first-of-type {

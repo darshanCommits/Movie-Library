@@ -8,34 +8,4 @@
   main section {
     grid-template-columns: repeat(1, 1fr) !important;
   }
-
-  aside {
-    
-    #info {
-        margin-top: 1rem !important;
-        gap: 2rem !important;
-    
-        div {
-            display: block;
-            // flex-direction: column;
-            // gap: .5rem;
-
-            h3,p {
-                text-align: left;
-            }
-          }
-      }
-  }
 }
-
-$bg: #1e1e2e;
-$header-clr: #757bb8;
-$text: #c3d3e8;
-$red: #ec5663;
-$delete: #ff1d30;
-$green: #a6e3a1;
-
-$blob: 50px;
-$header-height: 15vh;
-$info-width: calc(10rem + 12vw);
-$font-p : 0.8rem;
