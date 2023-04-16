@@ -6,7 +6,6 @@ const addNewMovie = document.getElementById("new__movie__form");
 const cards = document.getElementsByClassName("card");
 const info = document.getElementById("info");
 const delBtn = document.getElementsByClassName("trash-icon");
-let isWatched = document.getElementsByClassName("status");
 let library = [];
 
 function Movie(title, director, release, genre, plot) {
@@ -15,12 +14,11 @@ function Movie(title, director, release, genre, plot) {
     this.release = caseFix(release);
     this.genre = caseFix(genre);
     this.plot = caseFix(plot);
-    this.watched = false;
+    this.read = false;
 }
 
 function getMovieObjectWithCardIndex(card) {
     let index = card.dataset.index;
-
     return library[index];
 }
 
@@ -109,10 +107,8 @@ function createCard(movie, index) {
     movieSection.appendChild(card);
 }
 
-function updateInfo(e) {
+function updateInfo(e, card) {
     const info = document.getElementById("info");
-
-    const card = e.target.closest("div.card");
     const movie = getMovieObjectWithCardIndex(card);
     const textOfInfo = (i, text) => {
         [...info.children][i].children[1].textContent = text;
@@ -134,6 +130,11 @@ function toggleRead(card) {
     let parent = card.children[0];
     let svg = [...parent.children][0];
 
+    const movie = getMovieObjectWithCardIndex(card);
+    movie.read = !movie.read;
+
+    console.log(movie);
+
     parent.classList.toggle(["check-icon"]);
     parent.classList.toggle(["cross-icon"]);
 
@@ -150,14 +151,11 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 document.body.addEventListener("click", (e) => {
     let card = e.target.closest("div.card");
 
-    // let bruh = doesSomething(card);
-    // console.table(card.dataset.index, bruh);
-
     if (e.target.closest(".fa-trash-can")) {
         deleteFn(e);
     } else if (e.target.closest(".status")) {
         toggleRead(card);
     } else if (e.target.closest(".card")) {
-        updateInfo(e);
+        updateInfo(e, card);
     }
 });
