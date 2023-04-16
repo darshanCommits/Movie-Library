@@ -1,0 +1,23 @@
+@media only screen and (max-width: 1150px) {
+  main section {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+
+}
+
+@media only screen and (max-width: 750px) {
+  main section {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
+$bg: #1e1e2e;
+$header-clr: #757bb8;
+$text: #c3d3e8;
+$header-height: 15vh;
+$info-width: calc(15rem + 5vw);
+$blob: 50px;
+$red: #ec5663;
+$delete: #ff1d30;
+$green: #a6e3a1;

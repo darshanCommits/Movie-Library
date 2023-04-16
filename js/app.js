@@ -46,43 +46,6 @@ function createElem(tag, text, className) {
   return element;
 }
 
-function updateInfo(e) {
-  const info = document.getElementById("info");
-
-  function textOfCard(i) {
-    const text = [...e.target.closest("div.card").children][i].textContent;
-    return text;
-  }
-
-  const textOfInfo = (i, text) => {
-    [...info.children][i].children[1].textContent = text;
-  };
-
-  for (i = 0; i <= 4; i++) {
-    let j = i + 2;
-    if (j >= 5) j++;
-    const cardText = textOfCard(j);
-    textOfInfo(i, cardText);
-  }
-}
-
-function deleteFn(e) {
-  let card = e.target.closest("div.card");
-  card.classList.add("fade-out");
-  setTimeout(() => card.remove(), 250);
-}
-
-function toggleRead(card) {
-  let parent = card.children[0];
-  let svg = [...parent.children][0];
-
-  parent.classList.toggle(["check-icon"]);
-  parent.classList.toggle(["cross-icon"]);
-
-  svg.classList.toggle(["fa-x"]);
-  svg.classList.toggle(["fa-check"]);
-}
-
 function addToLibrary(movie) {
   library.push(movie);
   createCard(movie);
@@ -130,6 +93,43 @@ function createCard(movie) {
   movieSection.appendChild(card);
 }
 
+function updateInfo(e) {
+  const info = document.getElementById("info");
+
+  const textOfCard = (i) => {
+    const text = [...e.target.closest("div.card").children][i].textContent;
+    return text;
+  };
+
+  const textOfInfo = (i, text) => {
+    [...info.children][i].children[1].textContent = text;
+  };
+
+  for (let i = 0; i <= 4; i++) {
+    let j = i + 2;
+    if (j >= 5) j++;
+    const cardText = textOfCard(j);
+    textOfInfo(i, cardText);
+  }
+}
+
+function deleteFn(e) {
+  let card = e.target.closest("div.card");
+  card.classList.add("fade-out");
+  setTimeout(() => card.remove(), 250);
+}
+
+function toggleRead(card) {
+  let parent = card.children[0];
+  let svg = [...parent.children][0];
+
+  parent.classList.toggle(["check-icon"]);
+  parent.classList.toggle(["cross-icon"]);
+
+  svg.classList.toggle(["fa-x"]);
+  svg.classList.toggle(["fa-check"]);
+}
+
 document.getElementById("submitForm").addEventListener("click", (e) => {
   e.preventDefault();
 });
@@ -147,7 +147,3 @@ document.body.addEventListener("click", (e) => {
     updateInfo(e);
   }
 });
-
-// [...isWatched].forEach((x) => {
-//   x.addEventListener("click");
-// });
