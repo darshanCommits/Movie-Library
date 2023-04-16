@@ -21,7 +21,7 @@ header {
 
   & h1 {
     color: $bg;
-    padding: 1rem 2rem;
+    padding: 1vh 2vw;
 
     border-radius: 9px;
     font-size: 2rem;
@@ -210,7 +210,7 @@ section:hover > div:not(:hover) {
 }
 
 #create__new__card {
-  position: absolute;
+  position: fixed;
   transform: translateX(-50%) translateY(-300%);
   transition: transform 0.5s;
   top: 50%;

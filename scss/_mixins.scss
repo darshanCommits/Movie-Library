@@ -22,7 +22,7 @@
     ),
     linear-gradient(-45deg, $bg, rgba($bg, 0.7));
   background-size: 8rem 5rem, 8rem 5rem, 100% 100%;
-  background-position: 0 0, 0 2.5rem;
+  background-position: 2.5rem 0, 2.5rem 2.5rem;
 }
 
 @mixin blob() {

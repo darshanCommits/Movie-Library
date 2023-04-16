@@ -9,6 +9,14 @@
   transform: translate(-50%, -50%) !important;
 }
 
+.card.fade-out {
+  scale: 0;
+}
+
+.read {
+  color: #a6e3a1 !important;
+}
+
 .height100 {
   height: 100vh;
   width: 100vh;

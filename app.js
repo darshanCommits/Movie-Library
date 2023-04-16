@@ -3,10 +3,10 @@ const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
 const addMovie = document.getElementById("create__new__card");
 const addNewMovie = document.getElementById("new__movie__form");
-let cards = document.getElementsByClassName("card");
+const cards = document.getElementsByClassName("card");
 const info = document.getElementById("info");
+const delBtn = document.getElementsByClassName("trash-icon");
 let isWatched = document.getElementsByClassName("status");
-let delBtn = document.getElementsByClassName("trash-icon");
 let library = [];
 
 function Movie(title, director, release, genre, plot) {
@@ -139,20 +139,11 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 document.body.addEventListener("click", (e) => {
   let card = e.target.closest("div.card");
 
-  if (e.target.parentNode.classList.contains("fa-trash-can")) {
+  if (e.target.closest(".fa-trash-can")) {
     deleteFn(e);
-  }
-
-  console.log(card);
-
-  if (e.target.parentNode.classList.contains("status")) {
+  } else if (e.target.closest(".status")) {
     toggleRead(card);
-  }
-
-  if (
-    e.target.classList.contains("card") ||
-    e.target.parentNode.classList.contains("card")
-  ) {
+  } else if (e.target.closest(".card")) {
     updateInfo(e);
   }
 });
