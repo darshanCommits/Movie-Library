@@ -6,15 +6,23 @@ body {
   background-color: $body-bg;
 }
 
-.welcome {
+#welcome {
   position: fixed;
-  right: 0;
-  // top: 0;
-  // left: 0;
-  // transform: translate(-50%, -50%);
-  height: 5rem;
-  width: 5rem;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: black;
+  padding: 2rem;
+
+  h1 {
+    font-family: "Spline Sans Mono";
+    font-size: $font-h1;
+  }
+
+  >div {
+    right: 5%;
+    bottom: 15%;
+  }
 }
 
 header {

@@ -92,18 +92,22 @@
       pointer-events: none !important;
     }
   }
-} 
+}
+
+@mixin hide-info-text() {
+  body main aside#aside {
+    .blob,
+    h2,
+    h3,
+    p {
+      opacity: 0;
+      transition: visibility 0.1s;
+    }
+  }
+}
 
 @mixin mobile-yes-open() {
   @media only screen and (max-width: 530px) {
-    body main aside#aside {
-      .blob,
-      h2,
-      h3,
-      p {
-        opacity: 0;
-        transition: visibility 0.1s;
-      }
-    }
+    @include hide-info-text;
   }
 }

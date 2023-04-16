@@ -30,3 +30,7 @@
 .mobile-not-open {
   @include mobile-not-open;
 }
+
+.welcome-remove {
+  @include hide-info-text;
+}

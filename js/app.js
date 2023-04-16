@@ -1,3 +1,4 @@
+const welcome = document.getElementById("welcome");
 const main = document.getElementById("main");
 const movieSection = document.getElementById("movie__section");
 const blob = document.getElementsByClassName("blob");
@@ -62,9 +63,19 @@ function createNew(e) {
   if (e.target.id === "submitForm") {
     addToLibrary(fillDetails());
   }
+  deleteWelcomeScreen();
   main.classList.toggle("go__up");
   addMovie.classList.toggle("go__down");
   document.getElementById("body").classList.toggle("height100");
+}
+
+function deleteWelcomeScreen() {
+  if (welcome) {
+    welcome.remove();
+    root.classList.remove("welcome-remove");
+
+    root.style.setProperty("--info-width", "calc(10rem + 12vw)");
+  }
 }
 
 function createCard(movie, index) {
@@ -168,3 +179,9 @@ aside.addEventListener("click", () => {
     mobileAside();
   }
 });
+
+if (welcome) {
+  root.classList.add("welcome-remove");
+
+  root.style.setProperty("--info-width", "3rem");
+}
