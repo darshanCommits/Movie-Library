@@ -84,7 +84,8 @@ aside {
 
       p {
         width: 55%;
-        text-align: justify;
+        text-align: right;
+        align-self: flex-end;
         font-size: 0.8rem;
       }
     }

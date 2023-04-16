@@ -2,13 +2,29 @@
   main section {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-
-
 }
 
 @media only screen and (max-width: 750px) {
   main section {
     grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+  aside {
+    
+    #info {
+        margin-top: 1rem !important;
+        gap: 2rem !important;
+    
+        div {
+            display: block;
+            // flex-direction: column;
+            // gap: .5rem;
+
+            h3,p {
+                text-align: left;
+            }
+          }
+      }
   }
 }
 
@@ -16,7 +32,7 @@ $bg: #1e1e2e;
 $header-clr: #757bb8;
 $text: #c3d3e8;
 $header-height: 15vh;
-$info-width: calc(15rem + 5vw);
+$info-width: calc(10rem + 12vw);
 $blob: 50px;
 $red: #ec5663;
 $delete: #ff1d30;
