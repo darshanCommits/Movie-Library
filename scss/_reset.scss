@@ -7,6 +7,10 @@ h6 {
   font-size: unset;
 }
 
+p {
+  font-size: $font-p;
+}
+
 *,
 *:before,
 *:after {
@@ -14,5 +18,3 @@ h6 {
   margin: 0;
   padding: 0;
 }
-
-

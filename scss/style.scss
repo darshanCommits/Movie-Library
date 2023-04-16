@@ -5,7 +5,6 @@ $body-bg: #313244;
 $font-h1: calc(1vw + 1rem);
 $font-h2: 1.5rem;
 
-
 body {
   font-family: "Ubuntu", sans-serif;
   background-color: $body-bg;
@@ -86,7 +85,7 @@ aside {
         width: 55%;
         text-align: right;
         align-self: flex-end;
-        font-size: 0.8rem;
+        font-size: $font-p;
       }
     }
 
@@ -173,6 +172,11 @@ aside {
     &:nth-child(3n + #{$i}) {
       background: linear-gradient(map-get($angles, $i), $bg, rgba($bg, 0.7));
     }
+  }
+
+  p {
+    font-size: $font-p !important;
+
   }
 
   h2:first-of-type {
