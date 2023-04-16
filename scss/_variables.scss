@@ -8,7 +8,10 @@ $body-bg: #313244;
 
 $font-h1: calc(1vw + 1rem);
 $font-h2: 1.5rem;
-$font-para : max(1.3vw, 0.8rem);
+$font-para: max(1.3vw, 0.8rem);
 $blob: 1.9rem;
 $header-height: 15vh;
-$info-width: calc(10rem + 12vw);
+
+:root {
+  --info-width: calc(10rem + 12vw);
+}

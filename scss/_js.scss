@@ -22,3 +22,11 @@
   width: 100vh;
   overflow: hidden;
 }
+
+.mobile-yes-open {
+  @include mobile-yes-open;
+}
+
+.mobile-not-open {
+  @include mobile-not-open;
+}

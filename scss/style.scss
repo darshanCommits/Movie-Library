@@ -1,10 +1,20 @@
 @import "mixins", "reset", "variables", "js", "mediaQuery",
   url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,400;0,600;1,400&family=Ubuntu&display=swap");
 
-
 body {
   font-family: "Ubuntu", sans-serif;
   background-color: $body-bg;
+}
+
+.welcome {
+  position: fixed;
+  right: 0;
+  // top: 0;
+  // left: 0;
+  // transform: translate(-50%, -50%);
+  height: 5rem;
+  width: 5rem;
+  background-color: black;
 }
 
 header {
@@ -32,7 +42,7 @@ header {
 
 main {
   display: grid;
-  grid-template-columns: 1fr $info-width;
+  grid-template-columns: 1fr var(--info-width);
   width: 100vw;
   transition: transform 0.5s;
 
@@ -48,19 +58,22 @@ main {
 }
 
 aside {
+  cursor: default;
   @include flex-center(false, true);
   flex-direction: column;
   position: fixed;
   right: 0;
   top: $header-height;
   height: calc(100vh - $header-height - 2rem);
-  width: $info-width;
+  width: var(--info-width);
   padding: 1rem;
   background-color: $bg;
   color: $text;
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
   margin-top: 1rem;
+  transition: all 0.3s;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 
   > h2 {
     font-size: $font-h2;
@@ -83,7 +96,7 @@ aside {
         width: 55%;
         text-align: right;
         align-self: flex-end;
-        font-size: calc($font-para - .15rem);
+        font-size: calc($font-para - 0.15rem);
       }
     }
 
@@ -106,9 +119,13 @@ aside {
   color: $text;
   transition: all 250ms;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  perspective: 500px;
+  transition: all 0.3s;
+  position: relative;
 
   &:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    transition: all 150ms ease-in-out;
     .icon {
       opacity: 1;
     }
@@ -152,12 +169,6 @@ aside {
         transform: scale(1.5) rotate(30deg);
       }
     }
-  }
-
-  &:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-    transition: all 150ms ease-in-out;
   }
 
   $angles: (

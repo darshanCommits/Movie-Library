@@ -6,6 +6,9 @@ const addNewMovie = document.getElementById("new__movie__form");
 const cards = document.getElementsByClassName("card");
 const info = document.getElementById("info");
 const delBtn = document.getElementsByClassName("trash-icon");
+const aside = document.getElementById("aside");
+const root = document.documentElement;
+const mediaQuery = window.matchMedia("(max-width: 530px)");
 let library = [];
 
 function Movie(title, director, release, genre, plot) {
@@ -18,7 +21,7 @@ function Movie(title, director, release, genre, plot) {
 }
 
 function getMovieObjectWithCardIndex(card) {
-  let index = card.dataset.index;
+  const index = card.dataset.index;
   return library[index];
 }
 
@@ -34,11 +37,11 @@ function caseFix(str) {
 }
 
 function fillDetails() {
-  let title = document.getElementById("title").value;
-  let director = document.getElementById("director").value;
-  let release = document.getElementById("release").value;
-  let genre = document.getElementById("genre").value;
-  let plot = document.getElementById("plot").value;
+  const title = document.getElementById("title").value;
+  const director = document.getElementById("director").value;
+  const release = document.getElementById("release").value;
+  const genre = document.getElementById("genre").value;
+  const plot = document.getElementById("plot").value;
 
   return new Movie(title, director, release, genre, plot);
 }
@@ -112,25 +115,34 @@ function updateInfo(e, card) {
 }
 
 function deleteFn(e) {
-  let card = e.target.closest("div.card");
+  const card = e.target.closest("div.card");
   card.classList.add("fade-out");
   setTimeout(() => card.remove(), 250);
 }
 
 function toggleRead(card) {
-  let parent = card.children[0];
-  let svg = [...parent.children][0];
+  const parent = card.children[0];
+  const svg = [...parent.children][0];
 
   const movie = getMovieObjectWithCardIndex(card);
   movie.read = !movie.read;
 
   console.log(movie);
 
-  parent.classList.toggle(["check-icon"]);
-  parent.classList.toggle(["cross-icon"]);
+  parent.classList.toggle("check-icon");
+  parent.classList.toggle("cross-icon");
 
-  svg.classList.toggle(["fa-x"]);
-  svg.classList.toggle(["fa-check"]);
+  svg.classList.toggle("fa-x");
+  svg.classList.toggle("fa-check");
+}
+
+function mobileAside() {
+  root.classList.toggle("mobile-yes-open");
+  root.classList.toggle("mobile-not-open");
+  root.style.setProperty(
+    "--info-width",
+    infoWidth !== "20rem" ? "20rem" : "2rem"
+  );
 }
 
 document.getElementById("submitForm").addEventListener("click", (e) => {
@@ -140,7 +152,7 @@ document.getElementById("submitForm").addEventListener("click", (e) => {
 [...blob].forEach((x) => x.addEventListener("click", createNew));
 
 document.body.addEventListener("click", (e) => {
-  let card = e.target.closest("div.card");
+  const card = e.target.closest("div.card");
 
   if (e.target.closest(".fa-trash-can")) {
     deleteFn(e);
@@ -148,5 +160,11 @@ document.body.addEventListener("click", (e) => {
     toggleRead(card);
   } else if (e.target.closest(".card")) {
     updateInfo(e, card);
+  }
+});
+
+aside.addEventListener("click", () => {
+  if (mediaQuery.matches) {
+    mobileAside();
   }
 });
