@@ -152,13 +152,15 @@ function toggleRead(card) {
 }
 
 function mobileAside() {
-  root.classList.toggle("mobile-yes-open");
   root.classList.toggle("mobile-not-open");
+  root.classList.toggle("welcome-remove");
 
   let result =
     root.style.getPropertyValue("--info-width") === "20rem" ? "2rem" : "20rem";
 
   root.style.setProperty("--info-width", result);
+
+
 }
 
 document.getElementById("submitForm").addEventListener("click", (e) => {

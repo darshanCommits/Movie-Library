@@ -17,9 +17,10 @@
   color: #a6e3a1 !important;
 }
 
-
-.mobile-yes-open {
-  @include mobile-yes-open;
+.height100 {
+  height: 100dvh !important;
+  width: 100dvw !important;
+  overflow: hidden;
 }
 
 .mobile-not-open {
@@ -29,3 +30,4 @@
 .welcome-remove {
   @include hide-info-text;
 }
+

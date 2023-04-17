@@ -1,7 +1,7 @@
 @import "mixins", "reset", "variables", "js", "mediaQuery",
   url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,400;0,600;1,400&family=Ubuntu&display=swap");
 
-body {
+html body {
   font-family: "Ubuntu", sans-serif;
   background-color: $body-bg;
 }
@@ -17,7 +17,7 @@ body {
 
   h1 {
     font-family: "Spline Sans Mono";
-    font-size: $font-h1;
+    font-size: $font-h1 ;
   }
 
   > div {
@@ -33,14 +33,14 @@ header {
   position: fixed;
   z-index: 2;
   top: 0;
-  width: 100vw;
+  width: 100dvw;
   height: $header-height;
 
   & h1 {
     color: $bg;
     padding: 1vh 2vw;
     border-radius: 9px;
-    font-size: 2rem;
+    font-size: $font-h1;
     background-color: rgba($header-clr, 0.9);
     transition: all 0.1s;
     cursor: default;
