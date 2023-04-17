@@ -13,13 +13,14 @@ body {
   transform: translate(-50%, -50%);
   background-color: black;
   padding: 2rem;
+  width: clamp(16rem, 50rem, 50vw);
 
   h1 {
     font-family: "Spline Sans Mono";
     font-size: $font-h1;
   }
 
-  >div {
+  > div {
     right: 5%;
     bottom: 15%;
   }
@@ -38,11 +39,9 @@ header {
   & h1 {
     color: $bg;
     padding: 1vh 2vw;
-
     border-radius: 9px;
     font-size: 2rem;
     background-color: rgba($header-clr, 0.9);
-
     transition: all 0.1s;
     cursor: default;
   }

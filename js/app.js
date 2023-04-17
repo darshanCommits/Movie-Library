@@ -68,9 +68,11 @@ function createNew(e) {
 
 function deleteWelcomeScreen() {
   welcome.remove();
-  root.classList.remove("welcome-remove");
   if (!mediaQuery.matches)
-    root.style.setProperty("--info-width", "calc(10rem + 12vw)");
+    setTimeout(() => {
+      root.classList.remove("welcome-remove");
+      root.style.setProperty("--info-width", "calc(10rem + 12vw)");
+    }, 250);
 }
 
 function createCard(movie, index) {
