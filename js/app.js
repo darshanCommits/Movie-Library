@@ -12,9 +12,9 @@ const root = document.documentElement;
 const mediaQuery = window.matchMedia("(max-width: 530px)");
 let library = [];
 
-function Movie(title, director, release, genre, plot) {
+function Movie(title, mainCh, release, genre, plot) {
   this.title = caseFix(title);
-  this.director = caseFix(director);
+  this.mainCh = caseFix(mainCh);
   this.release = caseFix(release);
   this.genre = caseFix(genre);
   this.plot = caseFix(plot);
@@ -39,12 +39,12 @@ function caseFix(str) {
 
 function fillDetails() {
   const title = document.getElementById("title").value;
-  const director = document.getElementById("director").value;
+  const mainCh = document.getElementById("mainCh").value;
   const release = document.getElementById("release").value;
   const genre = document.getElementById("genre").value;
   const plot = document.getElementById("plot").value;
 
-  return new Movie(title, director, release, genre, plot);
+  return new Movie(title, mainCh, release, genre, plot);
 }
 
 function addToLibrary(movie) {
@@ -93,18 +93,18 @@ function createCard(movie, index) {
     const trash = createElem("i", "", ["fa-solid", "fa-trash-can", "fa-xl"]);
     trashWrapper.append(trash);
 
-    const title = createElem("h2", movie.title, ["title"]);
-    const director = createElem("h2", `By ${movie.director}`, ["director"]);
-    const plot = createElem("p", movie.plot, ["plot"]);
+    const title = createElem("h2", movie.title);
+    const mainCh = createElem("h2", `by ${movie.mainCh}`);
+    const plot = createElem("p", movie.plot);
     const hr = createElem("hr");
-    const releaseDate = createElem("h3", movie.release, ["release"]);
-    const genre = createElem("h3", movie.genre, ["genre"]);
+    const releaseDate = createElem("h3", movie.release);
+    const genre = createElem("h3", movie.genre);
 
     card.append(
       readWrapper,
       trashWrapper,
       title,
-      director,
+      mainCh,
       plot,
       hr,
       releaseDate,
@@ -159,8 +159,6 @@ function mobileAside() {
     root.style.getPropertyValue("--info-width") === "20rem" ? "2rem" : "20rem";
 
   root.style.setProperty("--info-width", result);
-
-
 }
 
 document.getElementById("submitForm").addEventListener("click", (e) => {
