@@ -5,8 +5,8 @@
 
 .go__down {
   transition: transform 0.7s;
-  position: absolute;
-  transform: translate(-50%, -40%) !important;
+  position: fixed;
+  transform: translate(-50%, -50%) !important;
 }
 
 .card.fade-out {
@@ -17,11 +17,6 @@
   color: #a6e3a1 !important;
 }
 
-.height100 {
-  height: 100vh;
-  width: 100vh;
-  overflow: hidden;
-}
 
 .mobile-yes-open {
   @include mobile-yes-open;
